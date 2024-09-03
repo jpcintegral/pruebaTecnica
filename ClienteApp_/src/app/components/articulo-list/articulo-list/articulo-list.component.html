@@ -1,0 +1,13 @@
+<mat-card *ngFor="let articulo of articulos">
+    <mat-card-title>{{ articulo.descripcion }}</mat-card-title>
+    <mat-card-content>
+      <p>Código: {{ articulo.codigo }}</p>
+      <p>Precio: {{ articulo.precio | currency }}</p>
+      <p>Stock: {{ articulo.stock }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Editar</button>
+      <button mat-button color="warn" (click)="deleteArticulo(articulo.articuloID)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+  

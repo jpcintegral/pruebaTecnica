@@ -1,0 +1,84 @@
+<div class="container">
+  <!-- Sección para mostrar los artículos disponibles en tarjetas -->
+  <div class="articulos-container">
+    <div class="row">
+      <div class="col-4" *ngFor="let articulo of articulos">
+        <mat-card class="articulo-card" appearance="outlined">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title> codigo: {{ articulo.codigo }}</mat-card-title>
+            <mat-card-subtitle> descripcion: {{ articulo.descripcion }}</mat-card-subtitle>
+          </mat-card-header>
+  
+          <img mat-card-image [src]="'https://localhost:7292/imgArticulo/' + articulo.imagen" alt="Imagen de {{ articulo.descripcion }}">
+  
+          <mat-card-content>
+            <p>Precio: {{ articulo.precio | currency }}</p>
+            <p>Stock disponible: {{ articulo.stock }}</p>
+          </mat-card-content>
+  
+          <mat-card-actions>
+            <button mat-icon-button (click)="decrementarCantidad(articulo)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ articulo.cantidadSeleccionada || 0 }}</span>
+            <button mat-icon-button (click)="incrementarCantidad(articulo)">
+              <mat-icon>add</mat-icon>
+            </button>
+  
+            <button mat-raised-button color="primary" (click)="agregarAlCarrito(articulo)">
+              Agregar al Carrito
+            </button>
+            <button mat-raised-button color="warn" (click)="cancelarSeleccion(articulo)">
+              Cancelar
+            </button>
+            <button mat-raised-button color="accent" (click)="limpiarSeleccion(articulo)">
+              Limpiar
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+  <!-- Sección para mostrar la tabla con artículos seleccionados -->
+  <div class="table-container">
+    <h3>Artículos Seleccionados</h3>
+    <mat-table [dataSource]="selectedItemsDataSource" class="mat-table">
+      <!-- Código columna -->
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.articulo.codigo}} </mat-cell>
+      </ng-container>
+  
+      <!-- Descripción columna -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+        <mat-cell  *matCellDef="let element"> {{element.articulo.descripcion}} </mat-cell>
+      </ng-container>
+  
+      <!-- Cantidad columna -->
+      <ng-container matColumnDef="cantidad">
+        <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cantidad}} </mat-cell>
+      </ng-container>
+  
+      <!-- Acciones columna -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="removeSelectedItem(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    
+  </div>
+</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Gestión de Tiendas</h2>
+<hr/>
+  <div class="row">
+    <!-- Formulario de Tienda -->
+    <div class="form-container">
+      <form [formGroup]="tiendaForm" (ngSubmit)="submitForm()" class="tienda-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Sucursal</mat-label>
+          <input matInput formControlName="sucursal" placeholder="Ingrese la sucursal">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dirección</mat-label>
+          <input matInput formControlName="direccion" placeholder="Ingrese la dirección">
+        </mat-form-field>
+
+        <div class="buttons">
+          <button mat-raised-button color="primary" type="submit" [disabled]="tiendaForm.invalid">
+            <mat-icon>save</mat-icon> {{ editMode ? 'Actualizar' : 'Agregar' }} Tienda
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="resetForm()">
+            <mat-icon>cancel</mat-icon> Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Listado de Tiendas -->
+    <div class="table-container">
+      <h3>Listado de Tiendas</h3>
+      <mat-table [dataSource]="tiendas" class="mat-table">
+        <ng-container matColumnDef="sucursal">
+          <mat-header-cell *matHeaderCellDef> Sucursal </mat-header-cell>
+          <mat-cell *matCellDef="let tienda"> {{ tienda.sucursal }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+          <mat-header-cell *matHeaderCellDef> Dirección </mat-header-cell>
+          <mat-cell *matCellDef="let tienda"> {{ tienda.direccion }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let tienda">
+            <button mat-icon-button color="primary" (click)="editTienda(tienda)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTienda(tienda.tiendaID)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="container">
+    <h2>Gestión de Artículos</h2>
+    <hr />
+    <div class="row">
+      <!-- Formulario de Artículo -->
+      <div class="form-container">
+        <form [formGroup]="articuloForm" (ngSubmit)="submitForm()" class="articulo-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" placeholder="Ingrese el código">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Ingrese la descripción">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput formControlName="precio" placeholder="Ingrese el precio">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Stock</mat-label>
+            <input matInput formControlName="stock" placeholder="Ingrese el stock">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Tienda</mat-label>
+            <mat-select formControlName="tiendaID">
+              <mat-option *ngFor="let tienda of tiendas" [value]="tienda.tiendaID">
+                {{ tienda.sucursal }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <div class="custom-file-input">
+            <label for="imagen">Imagen</label>
+            <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*">
+          </div>
+  
+          <div class="buttons">
+            <button mat-raised-button color="primary" type="submit" [disabled]="articuloForm.invalid">
+              <mat-icon>save</mat-icon> {{ editMode ? 'Actualizar' : 'Agregar' }} Artículo
+            </button>
+            <button mat-raised-button color="warn" type="button" (click)="resetForm()">
+              <mat-icon>cancel</mat-icon> Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Listado de Artículos -->
+      <div class="table-container">
+        <h3>Listado de Artículos</h3>
+        <mat-table [dataSource]="articulos" class="mat-table">
+      
+          <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">{{ articulo.codigo }}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="descripcion">
+            <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">{{ articulo.descripcion }}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="precio">
+            <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">{{ articulo.precio }}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="stock">
+            <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">{{ articulo.stock }}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="imagen">
+            <mat-header-cell *matHeaderCellDef>Imagen</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">
+              <img *ngIf="articulo.imagen" [src]="'https://localhost:7292/imgArticulo/' +  articulo.imagen" alt="Imagen del Artículo" class="thumbnail" />
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="tienda">
+            <mat-header-cell *matHeaderCellDef>Tienda</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">
+              {{ articulo.tiendaID }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let articulo">
+              <button mat-icon-button color="primary" (click)="editArticulo(articulo)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteArticulo(articulo.articuloID)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+      

@@ -1,0 +1,11 @@
+<mat-card *ngFor="let tienda of tiendas">
+    <mat-card-title>{{ tienda.sucursal }}</mat-card-title>
+    <mat-card-content>
+      <p>Dirección: {{ tienda.direccion }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Editar</button>
+      <button mat-button color="warn" (click)="deleteTienda(tienda.tiendaID)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+  

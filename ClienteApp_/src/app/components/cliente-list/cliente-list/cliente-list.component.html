@@ -1,0 +1,10 @@
+<mat-card *ngFor="let cliente of clientes">
+  <mat-card-title>{{ cliente.nombre }} {{ cliente.apellidos }}</mat-card-title>
+  <mat-card-content>
+    <p>Dirección: {{ cliente.direccion }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary">Editar</button>
+    <button mat-button color="warn" (click)="deleteCliente(cliente.ClienteID)">Eliminar</button>
+  </mat-card-actions>
+</mat-card>

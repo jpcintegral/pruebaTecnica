@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>Tienda</span>
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu">Menú</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item  *ngIf="isAdmin" routerLink="/tiendas">Tiendas</button>
+    <button mat-menu-item *ngIf="isAdmin" routerLink="/articulos">Artículos</button>
+    <button mat-menu-item routerLink="/carrito">Carrito</button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,14 @@
+
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegúrate de que el menú esté por encima de otros contenidos */
+    background-color: #3f51b5; /* Cambia según el color de tu preferencia */
+    color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+ 

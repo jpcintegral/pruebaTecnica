@@ -1,0 +1,195 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field .mat-form-field-label {
+    color: #929292 !important; /* Gris claro para las etiquetas */
+  }
+  
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(223 220 220 / 18%);
+}
+/* Estilo para el botón desactivado */
+.mat-button-disabled {
+    background-color: #1e7a7c47 !important;    
+    border: none;
+  }
+  
+
+  .container {
+    color: #333; /* Texto gris oscuro */
+    padding: 120px;
+  }
+  
+  h2, h3 {
+    color: #333; /* Texto gris oscuro */
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .form-container, .table-container {
+    flex: 1;
+  }
+  
+  .form-container {
+    flex: 0 0 30%; /* Ajusta el tamaño del formulario */
+    max-width: 30%;
+  }
+  
+  .table-container {
+    flex: 0 0 60%; /* Ajusta el tamaño de la tabla */
+    max-width: 60%;
+    overflow-y: auto; /* Agrega scroll vertical si hay más filas que el contenedor */
+    max-height: 400px;
+  }
+  
+  .tienda-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-header-cell {
+    background: #878787; /* Fondo gris oscuro para el encabezado */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  .mat-cell {
+    color: #878787; /* Texto gris claro para las celdas */
+  }
+  
+  .mat-header-row {
+    border: none; /* Sin borde para el encabezado */
+  }
+  
+  .mat-row {
+    background: #ffffff; /* Fondo blanco para las filas */
+    border-bottom: 1px solid #ddd; /* Borde inferior visible de las filas */
+  }
+  
+  .mat-row:hover {
+    background: #eaeaea; /* Fondo de hover gris claro */
+  }
+  
+  .mat-form-field .mat-label {
+    color: #929292; /* Etiquetas de los campos del formulario en gris claro */
+  }
+  
+  .mat-form-field .mat-input-element {
+    color: #333; /* Texto del campo de entrada */
+  }
+  .mat-select-value {
+    color: #464343;
+  }
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  button.mat-raised-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  button.mat-raised-button[color="primary"] {
+    background-color: #248588; /* Botón de guardar en verde aqua */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  button.mat-raised-button[color="warn"] {
+    background-color: #9b0505; /* Botón de cancelar o eliminar en rojo */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  button.mat-icon-button {
+    margin: 0;
+  }
+  
+  button.mat-icon-button[color="primary"] {
+    color: #248588; /* Color de íconos de editar */
+  }
+  
+  button.mat-icon-button[color="warn"] {
+    color: #9b0505; /* Color de íconos de eliminar */
+  }
+  /* Asegúrate de usar los estilos globales para que se apliquen a toda la aplicación */
+  .mat-form-field .mat-form-field-label {
+    color: #929292 !important; /* Gris claro para las etiquetas */
+  }
+  
+  .mat-form-field .mat-placeholder {
+    color: #929292 !important; /* Gris claro para el texto del placeholder */
+  }
+  
+  .mat-form-field .mat-input-element {
+    color: #333 !important; /* Texto gris oscuro para el campo de entrada */
+  }
+  
+  .mat-form-field-label {
+    color: rgb(76 76 76 / 70%) !important;
+  }
+  .mat-form-field .mat-form-field-label {
+    color: #929292 !important; /* Gris claro para las etiquetas */
+  }
+
+  .custom-file-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  .custom-file-input label {
+    font-size: 16px;
+    color: #929292; /* Mismo color que las etiquetas en mat-form-field */
+    margin-bottom: 8px;
+  }
+  
+  .custom-file-input input[type="file"] {
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover; /* Ajusta el tamaño de la imagen manteniendo su aspecto */
+  }
+
+  .articulo-card {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #d3d3d3; /* Borde gris */
+    box-shadow: none; /* Opcional: para eliminar sombras */
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+     color:#d3d3d3;
+  }
+  
+  
+  
+  
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .form-container, .table-container {
+      max-width: 100%;
+    }
+  
+    .form-container {
+      margin-bottom: 20px;
+    }
+  }
+  
+  
